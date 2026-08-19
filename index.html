@@ -1,0 +1,697 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Разбор «Повесть о конце света»</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            background: #f2efe9;
+            font-family: 'Segoe UI', Roboto, system-ui, sans-serif;
+            padding: 2rem 1rem;
+            line-height: 1.7;
+            color: #1e1e1e;
+        }
+        .container {
+            max-width: 860px;
+            margin: 0 auto;
+            background: #ffffff;
+            border-radius: 24px;
+            padding: 2.5rem 2.2rem;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.07);
+        }
+        h1 {
+            font-size: 2.2rem;
+            font-weight: 700;
+            letter-spacing: -0.3px;
+            margin-bottom: 0.25rem;
+            color: #1a1a2e;
+        }
+        .subhead {
+            color: #1e1e1e;
+            border-left: 4px solid #c9b8a8;
+            padding-left: 1.2rem;
+            margin-bottom: 2rem;
+            font-style: italic;
+        }
+        .subhead p {
+            margin-bottom: 0.5rem;
+        }
+        .subhead p:last-child {
+            margin-bottom: 0;
+        }
+        h2 {
+            font-size: 1.7rem;
+            font-weight: 600;
+            margin-top: 2rem;
+            margin-bottom: 0.8rem;
+            border-bottom: 3px solid #e0d6cc;
+            padding-bottom: 0.3rem;
+            color: #2d2d44;
+        }
+        p {
+            margin-bottom: 1rem;
+            text-align: justify;
+        }
+        .blockquote {
+            background: #f3f0eb;
+            padding: 1.2rem 1.8rem;
+            border-radius: 14px;
+            margin: 1.5rem 0;
+            border-left: 5px solid #b8a99a;
+            font-style: italic;
+        }
+        .fight-card {
+            background: #fcfaf8;
+            border: 1px solid #e9e2da;
+            border-radius: 18px;
+            padding: 1.8rem 1.8rem 1.2rem;
+            margin: 2.2rem 0;
+            transition: background 0.15s;
+        }
+        .fight-card:hover {
+            background: #faf7f2;
+        }
+        .fight-title {
+            font-size: 1.6rem;
+            font-weight: 700;
+            margin-bottom: 0.3rem;
+            color: #1f1f3a;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: baseline;
+            gap: 0.5rem;
+        }
+        .fight-number {
+            background: #d9d0c6;
+            padding: 0.1rem 1rem;
+            border-radius: 30px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: #2d2d44;
+        }
+        .fight-image-placeholder {
+            background: #1a1a2e;
+            border-radius: 16px;
+            height: 700px;
+            display: flex;
+            align-items: flex-start;
+            justify-content: center;
+            margin: 1rem 0 1.2rem 0;
+            border: 2px dashed #b8a99a;
+            overflow: hidden;
+            transition: background 0.2s;
+        }
+        .fight-image-placeholder img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: top center;
+            border-radius: 14px;
+        }
+        .fight-image-placeholder:hover {
+            background: #2a2a44;
+        }
+        .score-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0.4rem 1.5rem;
+            background: #f4f0eb;
+            padding: 0.8rem 1.2rem;
+            border-radius: 14px;
+            margin: 0.8rem 0 1rem;
+        }
+        .score-item {
+            display: flex;
+            justify-content: space-between;
+            border-bottom: 1px dashed #d6cbbc;
+            padding: 0.15rem 0;
+        }
+        .score-item:last-child {
+            border-bottom: none;
+        }
+        .score-label {
+            font-weight: 500;
+            color: #4a4a62;
+        }
+        .score-value {
+            font-weight: 600;
+            color: #1f1f3a;
+        }
+        .total-score {
+            font-size: 1.2rem;
+            font-weight: 700;
+            text-align: left;           /* ← изменено с right на left */
+            margin-top: 0.6rem;
+            padding-top: 0.5rem;
+            border-top: 2px solid #d6cbbc;
+            color: #1f1f3a;
+        }
+        .highlight {
+            background: #faeedb;
+            padding: 0 0.2rem;
+            border-radius: 4px;
+        }
+        hr {
+            border: none;
+            border-top: 2px dotted #ded5ca;
+            margin: 2.5rem 0;
+        }
+
+        /* Стили для дополнительных персонажей */
+        .extra-section {
+            background: #f8f5f0;
+            border-radius: 16px;
+            padding: 1.5rem 2rem;
+            margin-top: 2rem;
+            border-left: 5px solid #b8a99a;
+        }
+        .extra-section h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: #2d2d44;
+        }
+        .extra-item {
+            background: #fcfaf8;
+            border: 1px solid #e9e2da;
+            border-radius: 18px;
+            padding: 1.5rem 1.8rem 1.2rem;
+            margin: 1.8rem 0;
+        }
+        .extra-item .extra-image {
+            background: #1a1a2e;
+            border-radius: 16px;
+            height: 600px;
+            display: flex;
+            align-items: flex-start;
+            justify-content: center;
+            margin: 0.8rem 0 1rem 0;
+            border: 2px dashed #b8a99a;
+            overflow: hidden;
+        }
+        .extra-item .extra-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: top center;
+            border-radius: 14px;
+        }
+        .extra-item .extra-name {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: #1f1f3a;
+            margin-bottom: 0.2rem;
+        }
+        .extra-item p {
+            margin-bottom: 0.4rem;
+        }
+
+        @media (max-width: 600px) {
+            .container { padding: 1.5rem 1rem; }
+            h1 { font-size: 1.8rem; }
+            .score-grid { grid-template-columns: 1fr; }
+            .fight-title { font-size: 1.3rem; }
+            .fight-image-placeholder {
+                height: 300px;
+            }
+            .extra-item .extra-image {
+                height: 200px;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+
+    <h1>⚔️ Разбор «Повесть о конце света»</h1>
+    <div class="subhead">
+        <p>Жду пока мой код выполнит обучение модели Случайный лес, потому распишу то, что было на уме в последнее время)</p>
+        <p>Я тут пытался поискать тирлист персонажей из Повести о конце света, но ничего адекватного и современного не нашёл, потому я хочу расписать все бои и персонажей в этом посте, что мне понравилось и что не очень, может кто захочет это почитать или посмотреть.</p>
+    </div>
+
+    <h2>Сюжет</h2>
+    <p>Боги решили уничтожить человечество, но тут вскрывается правило, что можно устроить рагнарёк, который заключается в 13 поединках типа дуэль, то есть 1 человек против 1 Бога.</p>
+    <p>Как развивается сюжет: сначала бойцы выходят на арену, их представляют, они обмениваются ударами и бац, предыстория одного из героев, потом ещё немного битвы и вновь предыстория, но уже второго бойца, мы понимаем почему и за что они сражаются, а после один умирает, а другой становится победителем поединка, и так 13 раз... (на данный момент, в манге показывают 12 бой из 13).</p>
+    <p>Также, между поединками могут показать героев из будущих поединков, их реакцию на предыдущий бой или что-то подобное. Впрочем, могу сказать что все моменты между поединками мне очень импонируют, как в ван писе, когда автор раскрывает что происходит в мире, где когда-то побывали главные герои.</p>
+
+    <h2>Система оценки (0–1 по каждому пункту)</h2>
+    <div class="blockquote">
+        <ul style="list-style: none; padding-left: 0;">
+            <li>👤 <strong>Персонаж Человек</strong> (его история, мотивы, может даже дизайн, но почти все дизайны пришлись по душе, буду выделять только самые любимые)</li>
+            <li>👾 <strong>Персонаж Бог</strong> (его история, мотивы и то что я написал сверху про человека)</li>
+            <li>⚔️ <strong>Персонаж Валькирии</strong> (По сюжету человек не может ранить Бога, но если человек будет сражаться вместе с Валькирией, то убить Бога сможет, обычно Валькирия просто превращается в оружие, по типу катаны или алебарды, в сюжетном плане это персонажи функции, не очень интересные, но некоторых буду отмечать)</li>
+            <li>💥 <strong>Сама Битва</strong></li>
+            <li>❌ <strong>Момент Х</strong> (Он нам понадобится чуть позже)</li>
+        </ul>
+        <p style="margin-top: 0.5rem;">Также на всякий случай напишу, что не буду спойлерить победителя поединка) наверное. И я буду сильно топить за Богов, их тут сделали интересно, да и ради них и начал читать эту мангу.</p>
+    </div>
+
+    <hr>
+
+    <!-- Бой 1 -->
+    <div class="fight-card">
+        <div class="fight-title"><span class="fight-number">1 Бой</span> Люй Бу (Генерал из историй про Троецарствие) против Тора</div>
+        <div class="fight-image-placeholder">
+            <img src="images/fight1.jpg" alt="Бой 1: Люй Бу против Тора">
+        </div>
+        <p><strong>1.</strong> Ну, в первом бою нам показали просто здоровенного и ловкого бугая человека, который очень хочет драки, не важно с кем, главное с достойным противником! (Ставлю 0,5, меня впечатляет его предыстория, но если так подумать, в нём мало что интересного)</p>
+        <p><strong>2.</strong> А вот с Тором слегка иначе, его нарисовали ну просто шик, мне очень понравилась его "Японизация" длинные красные волосы и несколько шрамов (или не шрамов а следы от молний, я так и не понял) на лице и теле, он на самом деле тоже хотел сразиться с достойным соперником, как и Люй Бу. (Ему ставлю 0,7, у него предыстория скучновата, рассказали как давным-давно он сражался с великанами и то что они не смогли дать ему нормального боя, но дизайн просто ммм)</p>
+        <p><strong>3.</strong> Валькирия тут миленькая, высокая, сказала всего несколько фраз за сюжет и больше её не показывали, что грустно (0,5)</p>
+        <p><strong>4.</strong> Так как это был первый бой, то я бы назвал его ознакомительным, там не так много событий, но бой считаю интересным, смотреть как Тор вшыряет свой молот классно (я не фанат Тора в этой истории, честно) (1)</p>
+        <p><strong>5.</strong> О, ну тут моя главная претензия к этому бою и тот самый момент Х, так как это не жожо, то автор добавил такую штуку, опишу её так, представьте как 2 копья летят в сторону друг друга и они сталкиваются, после чего одно из копий уничтожает второе и летит дальше (самый яркий момент битва Дио с Джотаро, когда последний ударил в колено) ну так, мне это не нравится, потому тут будет такой балл (-1)</p>
+        <div class="score-grid">
+            <div class="score-item"><span class="score-label">Человек</span><span class="score-value">0,5</span></div>
+            <div class="score-item"><span class="score-label">Бог</span><span class="score-value">0,7</span></div>
+            <div class="score-item"><span class="score-label">Валькирия</span><span class="score-value">0,5</span></div>
+            <div class="score-item"><span class="score-label">Битва</span><span class="score-value">1</span></div>
+            <div class="score-item"><span class="score-label">Момент Х</span><span class="score-value">−1</span></div>
+        </div>
+        <div class="total-score">Итог: 1,7 Для первого поединка неплохо, но будет лучше</div>
+    </div>
+
+    <!-- Бой 2 -->
+    <div class="fight-card">
+        <div class="fight-title"><span class="fight-number">2 Бой</span> Адам (первый человек) против Зевса!</div>
+        <div class="fight-image-placeholder">
+            <img src="images/fight2.jpg" alt="Бой 2: Адам против Зевса">
+        </div>
+        <p><strong>1.</strong> Адам классный, способность интересная (да у некоторых героев среди людей есть способности), история такая, Еву судят за то что она съела яблоко, заходит Адам в зал суда с корзиной яблок и сжирает их, забирая свою жену, лично мне понравилось как автор показал отношение Адама к Богам, дизайн у него своеобразный, ну то есть его нет, он ходит голым, листик в области паха не в счёт (1)</p>
+        <p><strong>2.</strong> Ух, Зевс необычно выглядит, по факту это дед на стероидах, конечно, его старших братьев показали намного лучше и моложе, как ни странно, но что есть то есть, в предыстории рассказывают как он своего отца избивал (предыстория предсказала весь бой с Адамом)) (0,8)</p>
+        <p><strong>3.</strong> Валькирия тут полторашка, ну и балов ей накину столько же (1,5-1 дизайн библиотекарши ну такое)</p>
+        <p><strong>4.</strong> Бой был интереснее предыдущего, он меня впечатлил гораздо больше, тем более он тут кулачный, за все 12 битв, что я прочитал, чисто кулачных боёв 2 и этот лучший! (1)</p>
+        <p><strong>5.</strong> Я бы мог сказать что тут есть элементы момента Х, но его тут адекватно обыграли, потому штрафа не будет</p>
+        <div class="score-grid">
+            <div class="score-item"><span class="score-label">Человек</span><span class="score-value">1</span></div>
+            <div class="score-item"><span class="score-label">Бог</span><span class="score-value">0,8</span></div>
+            <div class="score-item"><span class="score-label">Валькирия</span><span class="score-value">1,5</span></div>
+            <div class="score-item"><span class="score-label">Битва</span><span class="score-value">1</span></div>
+            <div class="score-item"><span class="score-label">Момент Х</span><span class="score-value">0</span></div>
+        </div>
+        <div class="total-score">Итог: 3,3 (ничего себе как мы скаканули)</div>
+    </div>
+
+    <!-- Бой 3 -->
+    <div class="fight-card">
+        <div class="fight-title"><span class="fight-number">3 Бой</span> Сасаки Кодзиро (это мечник из Японии) против Посейдона!</div>
+        <div class="fight-image-placeholder">
+            <img src="images/fight3.jpg" alt="Бой 3: Сасаки против Посейдона">
+        </div>
+        <p><strong>1.</strong> Мы подошли к моему одному из любимых людей, в этой истории, всё что было с Сасаки, мне очень понравилось, его способность, предыстория о том как он вечно всем проигрывал и учился на своих ошибках, его дизайн тоже уникальный (ну, почти), если остальные герои показаны в молодости, то Сасаки чисто старец с катаной, безоговорочно (1)</p>
+        <p><strong>2.</strong> Что насчёт Посейдона, среди всех братьев он мне нравится меньше всего, его высокомерие оправдано, но в целом он неприятный, способностей с водой не показал, только трезубцем машет, даже не бросал его в оппонента (а он мог им управлять), предыстория ме, она нужна только для того чтобы показать как он убил своего старшего брата Адамаса, но за его зелёные ботиночки накину балов (0,6)</p>
+        <p><strong>3.</strong> Валькирия тут прикольная, высокая, с шизой, с грудью...перестарались, но мне нравится (0,8)</p>
+        <p><strong>4.</strong> Бой тут больше в тактику и в предугадывании действий противника, а что было в конце, ну просто шик, прям абсолют аниме (1)</p>
+        <p><strong>5.</strong> Тут не было момента Х! (0)</p>
+        <div class="score-grid">
+            <div class="score-item"><span class="score-label">Человек</span><span class="score-value">1</span></div>
+            <div class="score-item"><span class="score-label">Бог</span><span class="score-value">0,6</span></div>
+            <div class="score-item"><span class="score-label">Валькирия</span><span class="score-value">0,8</span></div>
+            <div class="score-item"><span class="score-label">Битва</span><span class="score-value">1</span></div>
+            <div class="score-item"><span class="score-label">Момент Х</span><span class="score-value">0</span></div>
+        </div>
+        <div class="total-score">Итог: 3,6</div>
+    </div>
+
+    <!-- Бой 4 -->
+    <div class="fight-card">
+        <div class="fight-title"><span class="fight-number">4 Бой</span> Джек Потрошитель против Геракла!</div>
+        <div class="fight-image-placeholder">
+            <img src="images/fight4.jpg" alt="Бой 4: Джек против Геракла">
+        </div>
+        <p><strong>1.</strong> Джек неоднозначный, не как в Жожо (да в жожо был Джек Потрошитель) стройный дед, что расставляет ловушки, когда читаешь предыстрию чувствуешь себя неприятно, но после неё можно понять почему он такой...такой стрёмный дед, его можно назвать гедонистом, живёт ради кайфа, из-за его странной особенности, которую с натяжкой можно назвать способностью (0,5)</p>
+        <p><strong>2.</strong> Геракл мне напомнил Джонатана, здоровенный амбал с невероятной справедливостью (также в него ножи втыкали, прям как в Джонатана), предыстория не о чём, рассказали как он выпил жижи и получил силушку богатырскую (0,5)</p>
+        <p><strong>3.</strong> Валькирия тут сбалмышная полтарашка, что любит бдсм, иначе сказать не могу (0,5)</p>
+        <p><strong>4.</strong> Бой классный и прям по хорошему жожный с "ты думаешь я ничего не предусмотрел?" (1)</p>
+        <p><strong>5.</strong> Тут был момент Х, но он обыгран, и прям очень хорошо, так что (0)</p>
+        <div class="score-grid">
+            <div class="score-item"><span class="score-label">Человек</span><span class="score-value">0,5</span></div>
+            <div class="score-item"><span class="score-label">Бог</span><span class="score-value">0,5</span></div>
+            <div class="score-item"><span class="score-label">Валькирия</span><span class="score-value">0,5</span></div>
+            <div class="score-item"><span class="score-label">Битва</span><span class="score-value">1</span></div>
+            <div class="score-item"><span class="score-label">Момент Х</span><span class="score-value">0</span></div>
+        </div>
+        <div class="total-score">Итог: 2,5</div>
+    </div>
+
+    <!-- Бой 5 -->
+    <div class="fight-card">
+        <div class="fight-title"><span class="fight-number">5 Бой</span> Райден (сумоист) против Шивы (Индийское божество Разрушения с 4 руками)</div>
+        <div class="fight-image-placeholder">
+            <img src="images/fight5.jpg" alt="Бой 5: Райден против Шивы">
+        </div>
+        <p><strong>1.</strong> Райдена представили забавно, в его первое появление он был окружён по меньшей мере 10 вуменами, которые были без ума от его мышц, его даже можно сравнить с Адамом, но гигачадной версией, так как Райден выше Адама в 2 раза , предыстория мне не понравилась, типа, он всю жизнь сдерживал свою силу (0,6)</p>
+        <p><strong>2.</strong> У Шивы очень прикольный флешбек, где он со своим другом избивал всех сильнейших богов индийского пантеона, прям круто, 4 руки уже необычно, в основном Боги очень похожи на людей, так что это важная особенность, а ещё он фиолетовый, как Танос (0,7)</p>
+        <p><strong>3.</strong> Валькирия здесь здоровенная бой баба с большим сердцем (0,6)</p>
+        <p><strong>4.</strong> Бой кулачный, как второй, но впечатлил он меня меньше, хотя штучки из Сумо прикольные, даже Шива был поражён (0,8)</p>
+        <p><strong>5.</strong> Здесь есть момент Х, потому (-1)</p>
+        <div class="score-grid">
+            <div class="score-item"><span class="score-label">Человек</span><span class="score-value">0,6</span></div>
+            <div class="score-item"><span class="score-label">Бог</span><span class="score-value">0,7</span></div>
+            <div class="score-item"><span class="score-label">Валькирия</span><span class="score-value">0,6</span></div>
+            <div class="score-item"><span class="score-label">Битва</span><span class="score-value">0,8</span></div>
+            <div class="score-item"><span class="score-label">Момент Х</span><span class="score-value">−1</span></div>
+        </div>
+        <div class="total-score">Итог: 1,7</div>
+    </div>
+
+    <!-- Бой 6 -->
+    <div class="fight-card">
+        <div class="fight-title"><span class="fight-number">6 Бой</span> Будда против 7 Богов Удачи!</div>
+        <div class="fight-image-placeholder">
+            <img src="images/fight6.jpg" alt="Бой 6: Будда против 7 Богов">
+        </div>
+        <p><strong>1.</strong> Будда является одним из моих любимых героев среди Богов, дизайн классный, привычка хавать сладости классная, способность классная, флешбек ну просто классный, индийская мифология в истории передана достойно (1)</p>
+        <p><strong>2.</strong> 7 Богов удачи это ложь, на самом деле это Бог счастья Зерофуку, что развалился на 7 и стал жить так, флешбек мне не зашёл, слёзовыжималка, не интересно, дизайн богов удачи мне пришёлся по душе, но не дизайн Зерофуку, просто злой ребёнок (0,7)</p>
+        <p><strong>3.</strong> Валькирии тут нет (0)</p>
+        <p><strong>4.</strong> Бой прикольный, способность Будды предсказывать будущее очень интересная, так как он предсказывает не совсем будущее, а то что сделает душа и он типа читает душу, бой разделён на две фазы(1)</p>
+        <p><strong>5.</strong> Тут нет момента Х</p>
+        <div class="score-grid">
+            <div class="score-item"><span class="score-label">Человек</span><span class="score-value">1</span></div>
+            <div class="score-item"><span class="score-label">Бог</span><span class="score-value">0,5</span></div>
+            <div class="score-item"><span class="score-label">Валькирия</span><span class="score-value">0</span></div>
+            <div class="score-item"><span class="score-label">Битва</span><span class="score-value">1</span></div>
+            <div class="score-item"><span class="score-label">Момент Х</span><span class="score-value">0</span></div>
+        </div>
+        <div class="total-score">Итог: 2,7</div>
+    </div>
+
+    <!-- Бой 7 -->
+    <div class="fight-card">
+        <div class="fight-title"><span class="fight-number">7 бой</span> Цин Ши Хуанди (первый правитель объединенного китая) против Аида!</div>
+        <div class="fight-image-placeholder">
+            <img src="images/fight7.jpg" alt="Бой 7: Цинь против Аида">
+        </div>
+        <p><strong>1.</strong> Цин занимает 1 место в топе всех героев у зрителей, дизайн одновременно и импонирует, и вызывает сомнения) Способность у него также необычная, как и у многих людей в этой истории, она проявляется в его глазах, типа, он может видеть все основные точки существ, но если он увидит рану, то эта рана отразится на нём (я не знаю, что курил автор, чтобы придумать такой дебафф), также он с помощью воздуха из рта может ослаблять атаки оппонента, надавали ему способностей конечно много.. Предыстория грустная, но не зацепила (0,8)</p>
+        <p><strong>2.</strong> Аид прекрасен, и дизайн, и мотивация (у многих богов в этой истории мотивация это просто ощутить вкус битвы), у него из необычных способностей только кровь, которая делает его и копье сильнее. (1)</p>
+        <p><strong>3.</strong> Валькирия тут очень похожа на Валькирию Джека Потрошителя, полторашка (1-0,5) — ставлю 0,5</p>
+        <p><strong>4.</strong> Бой хороший и динамичный, в один момент оба хохотали, так как почти у всех пар в поединках есть что-то общее, то тут это титул императора, что Цин, что Аид являются императорами своих земель и каждый пытается доказать, что он единственный и сильнейший(1)</p>
+        <p><strong>5.</strong> ААА здесь есть момент Х! (-1)</p>
+        <div class="score-grid">
+            <div class="score-item"><span class="score-label">Человек</span><span class="score-value">0,8</span></div>
+            <div class="score-item"><span class="score-label">Бог</span><span class="score-value">1</span></div>
+            <div class="score-item"><span class="score-label">Валькирия</span><span class="score-value">0,5</span></div>
+            <div class="score-item"><span class="score-label">Битва</span><span class="score-value">1</span></div>
+            <div class="score-item"><span class="score-label">Момент Х</span><span class="score-value">−1</span></div>
+        </div>
+        <div class="total-score">Итог: 2,3</div>
+    </div>
+
+    <!-- Бой 8 -->
+    <div class="fight-card">
+        <div class="fight-title"><span class="fight-number">8 Бой</span> Никола Тесла против Вельзевула!</div>
+        <div class="fight-image-placeholder">
+            <img src="images/fight8.jpg" alt="Бой 8: Тесла против Вельзевула">
+        </div>
+        <p><strong>1.</strong> Ну Тесла здесь гигачадище, эксцентричный, эгоцентричный и сила у него связана с электричеством, до того, как он залез в костюм, он выглядел потрясно а в бою, ну не особо, предыстория пускай и грустная, но интересная, в ней рассказывается почему он решил стать учёным (1)</p>
+        <p><strong>2.</strong> Вельзевул неоднозначен, сначала он не вызвал симпатии, но после некоторого времени я принял его, наверное его эльфийские ушки портят образ, но в целом прикольно, предыстория интересная и даже связана с глобальным сюжетом. Он тоже своего рода учёный и способность у него связана с вибрацией (1)</p>
+        <p><strong>3.</strong> Валькирия тут с новым дизайном и высокая, из-за любви к науке её поставили в паре с учёным (1)</p>
+        <p><strong>4.</strong> Бой тоже отличается от других, Тесла вечно глаголит и раскрывает свои способности, а Вельзевул терпит, там есть захватывающие моменты, но если так подумать, то бой сумбурный (0,5)</p>
+        <p><strong>5.</strong> Тут нет момента Х (0)</p>
+        <div class="score-grid">
+            <div class="score-item"><span class="score-label">Человек</span><span class="score-value">1</span></div>
+            <div class="score-item"><span class="score-label">Бог</span><span class="score-value">1</span></div>
+            <div class="score-item"><span class="score-label">Валькирия</span><span class="score-value">1</span></div>
+            <div class="score-item"><span class="score-label">Битва</span><span class="score-value">0,5</span></div>
+            <div class="score-item"><span class="score-label">Момент Х</span><span class="score-value">0</span></div>
+        </div>
+        <div class="total-score">Итог: 3,5</div>
+    </div>
+
+    <!-- Бой 9 -->
+    <div class="fight-card">
+        <div class="fight-title"><span class="fight-number">9 Бой</span> Царь Леонид против Аполлона!</div>
+        <div class="fight-image-placeholder">
+            <img src="images/fight9.jpg" alt="Бой 9: Леонид против Аполлона">
+        </div>
+        <p><strong>1.</strong> Леонид принарядился в камуфляж современного военного и выглядит никак грек, а как американец, в предыстории он крутой мужик, который сделал крутой поступок (ну все вы знаете про подвиг 300 спартанцев) (1)</p>
+        <p><strong>2.</strong> Аполлон мой любимый бог среди всех богов в истории, выглядит шикарно, в предыстории раскрывается, что он был незаурядным богом, который добился всего сам, а его фраза "Познай самого себя " прям очень хорошо раскрывает его, из способностей у него артефакт в виде нитей, из которых он может сделать буквально что захочет, от перчаток до лука (1)</p>
+        <p><strong>3.</strong> Валькирия с новым дизайном, снова! Её в битве показывали много, и она часто поддерживает Леонида (если так задуматься, то с 8 битвы все валькирии получили больше экранного времени и это очень хорошо) (1)</p>
+        <p><strong>4.</strong> Бой здесь шикарный, инициатива переходит от человека к Богу и наоборот, вот вроде Леонид сейчас свалится от ран и бам, Аполлон лежит в своей крови. И я только сейчас вспомнил, что начало боя тоже был в основном кулачным, так что а истории 3 кулачного боя, а потом Аполлон решил взяться за лук. (1)</p>
+        <p><strong>5.</strong> Ну почему тут он есть, ну зачем он тут… (-1)</p>
+        <div class="score-grid">
+            <div class="score-item"><span class="score-label">Человек</span><span class="score-value">1</span></div>
+            <div class="score-item"><span class="score-label">Бог</span><span class="score-value">1</span></div>
+            <div class="score-item"><span class="score-label">Валькирия</span><span class="score-value">1</span></div>
+            <div class="score-item"><span class="score-label">Битва</span><span class="score-value">1</span></div>
+            <div class="score-item"><span class="score-label">Момент Х</span><span class="score-value">−1</span></div>
+        </div>
+        <div class="total-score">Итог: 3</div>
+    </div>
+
+    <!-- Бой 10 -->
+    <div class="fight-card">
+        <div class="fight-title"><span class="fight-number">10 Бой</span> Окита Соджи (мечник из Японии) против Сусаноо-но-микото!</div>
+        <div class="fight-image-placeholder">
+            <img src="images/fight10.jpg" alt="Бой 10: Окита против Сусаноо">
+        </div>
+        <p><strong>1.</strong> Это сын сюжета и любимчик автора манги (он не смог это скрыть), его показали после третьего или четвёртого поединка и этого персонажа я вижу так: «Ух, как же я хочу кого-нибудь убить», ну такое мне не по душе, дизайн окей, мелкий пацан, благодаря своему телосложению может буквально летать по полю, он очень быстрый и это его главная сила. (0,3)</p>
+        <p><strong>2.</strong> Сусанно невероятный, у меня других слов нет, насколько он хорош, он просто здоровенный скуф (но не лысый), по сюжету раскрывается, что он очень хотел сразиться с каким-нибудь великим мечником и им оказался как раз Соджи, что грустно, я бы посмотрел битву Сасаки Коджиро (из 3 раунда) с ним. Также мне запомнился момент, когда Боги решили, что должен пойти Анубис, то заходит Сусаноо и утверждает, что идёт именно он, Анубис не смог противостоять харизме Сусаноо и просто сдался (1)</p>
+        <p><strong>3.</strong> Ура, третья уникальная валькирия не полторашка, но её было мало (0,8)</p>
+        <p><strong>4.</strong> Это была очень затянутая битва (автор же должен показать своего любимого персонажа во всей красе), но её было интересно читать, апогей всей битвы был тогда, когда Сусанно получил меч из воздуха, но конец битвы это рояль в кустах, это мне не особо понравилось, но автору виднее. (0,5)</p>
+        <p><strong>5.</strong> Тут нет момента Х (0)</p>
+        <div class="score-grid">
+            <div class="score-item"><span class="score-label">Человек</span><span class="score-value">0,3</span></div>
+            <div class="score-item"><span class="score-label">Бог</span><span class="score-value">1</span></div>
+            <div class="score-item"><span class="score-label">Валькирия</span><span class="score-value">0,8</span></div>
+            <div class="score-item"><span class="score-label">Битва</span><span class="score-value">0,5</span></div>
+            <div class="score-item"><span class="score-label">Момент Х</span><span class="score-value">0</span></div>
+        </div>
+        <div class="total-score">Итог: 2,6</div>
+    </div>
+
+    <!-- Бой 11 -->
+    <div class="fight-card">
+        <div class="fight-title"><span class="fight-number">11 Бой</span> Симо Хяюхя (Белая Смерть) против Локи!</div>
+        <div class="fight-image-placeholder">
+            <img src="images/fight11.jpg" alt="Бой 11: Симо против Локи">
+        </div>
+        <p><strong>1.</strong> Ух, это ещё один из моих любимых персонажей среди людей, молчаливый мелкий пацан с винтовкой и пёсиком. История списана с википедии, даже рассказали, как его ранили во время Советско-финляндской войны (да, он убивал советов, за это осуждаю). В бою он шмалял из винтовки, что гениально, только он использовал огнестрел во всей истории (1-0,4(моё осуждение я расцениваю в 0,4))</p>
+        <p><strong>2.</strong> Локи был показан с первых глав, был одним из главных реакционеров на бои, его способность превращаться в того, кого он касался банальная, но он её выкрутил в абсолют, так как он может создать армию из иллюзий (в бою он использовал проекции Тора, Одина и Геракла). Дизайн ну норм, также он как скорпион из мортал комбата из рук цепи создаёт. (0,8)</p>
+        <p><strong>3.</strong> Это самая, на мой взгляд, красивая и милая валькирия из всех! (1)</p>
+        <p><strong>4.</strong> Бой в этот раз был коротким и масштабным, здоровенный финский лес, где Симо бегает и шмаляет, то по копиям, то по Локи, а он пытается его найти. (1)</p>
+        <p><strong>5.</strong> Здесь нет момента Х. (0)</p>
+        <div class="score-grid">
+            <div class="score-item"><span class="score-label">Человек</span><span class="score-value">0,8</span></div>
+            <div class="score-item"><span class="score-label">Бог</span><span class="score-value">0,8</span></div>
+            <div class="score-item"><span class="score-label">Валькирия</span><span class="score-value">1</span></div>
+            <div class="score-item"><span class="score-label">Битва</span><span class="score-value">1</span></div>
+            <div class="score-item"><span class="score-label">Момент Х</span><span class="score-value">0</span></div>
+        </div>
+        <div class="total-score">Итог: 3,4</div>
+    </div>
+
+    <!-- Бой 12 -->
+    <div class="fight-card">
+        <div class="fight-title"><span class="fight-number">12 Бой</span> Саката Кинтоки против Одина!</div>
+        <div class="fight-image-placeholder">
+            <img src="images/fight12.jpg" alt="Бой 12: Кинтоки против Одина">
+        </div>
+        <p><strong>1.</strong> Кинтоки появлялся ранее в сюжете, как браток Будды и мне стало интересно, кто такой этот Саката Кинтоки, но лора к нашему времени не сохранилось, потому автор придумал свой и мне понравился. Дизайн у него необычный, по лору он на половину демон с гигантским топором, потому у него имеется 1 рог, и длинные ногти, у него вместо обуви какая-то дощечка с лезвием, как каблук, на вид в этом очень трудно ходить (0,8)</p>
+        <p><strong>2.</strong> Один Один Один, он с 1 главы уже вызывал странные подозрения, так как больше всего хотел уничтожить человечество, но зачем? Это спойлеры, да и он не так много рассказал о своём плане,его предыстория на равне с предысторией Кинтоки, в этот раз автор прям постарался и написал очень хорошое и грустное прошлое обоих персонажей. Насчёт дизайна, у него их два, боевой и не боевой, не боевой режим мне по душе, боевой не особо, у него повязка пропадает, но это всё не важно, так как у него самый богатый реестр способностей, всего 18…восемнадцать! И лечение и атака, короче, швейцарский нож. (0,6)</p>
+        <p><strong>3.</strong> Валькирия тут снова полторашка, но уже не копия валькирии 4 и 7 раунда, так что (0,6)</p>
+        <p><strong>4.</strong> Битва ещё не окончена, но это самая жестокая битва, на мой взгляд, что там творит Один с Кинтоки это жуть какая-то, но битва всё ещё продолжается, думаю моё мнение изменится, когда я узнаю кто победил (в этот раз болею за Кинтоки).</p>
+        <p><strong>5.</strong> Пока момента Х нет)</p>
+        <div class="score-grid">
+            <div class="score-item"><span class="score-label">Человек</span><span class="score-value">0,8</span></div>
+            <div class="score-item"><span class="score-label">Бог</span><span class="score-value">0,6</span></div>
+            <div class="score-item"><span class="score-label">Валькирия</span><span class="score-value">0,6</span></div>
+            <div class="score-item"><span class="score-label">Битва</span><span class="score-value">—</span></div>
+            <div class="score-item"><span class="score-label">Момент Х</span><span class="score-value">0</span></div>
+        </div>
+        <div class="total-score">Итог: Не знаю (бой не окончен)</div>
+    </div>
+
+    <hr>
+
+    <!-- ===== ДОПОЛНИТЕЛЬНЫЙ РАЗДЕЛ С КАРТИНКАМИ ===== -->
+    <div class="extra-section">
+        <h3>Дополнительно: второстепенные персонажи</h3>
+
+        <!-- Брюнхильда -->
+        <div class="extra-item">
+            <div class="extra-name">Брюнхильда</div>
+            <div class="extra-image">
+                <img src="images/extra_brynhildr.jpg" alt="Брюнхильда">
+            </div>
+            <p>Валькирия, которая начала рагнарёк, забавная такая вумен, в манге ей иногда рисуют очень забавные рожи, особенно когда она удивляется.</p>
+        </div>
+
+        <!-- Анубис -->
+        <div class="extra-item">
+            <div class="extra-name">Анубис</div>
+            <div class="extra-image">
+                <img src="images/extra_anubis.jpg" alt="Анубис">
+            </div>
+            <p>Будущий финальный боец со стороны врагов, к сожалению, его мотивация — это подраться с сильным соперником. Также, хочу добавить, что есть вероятность, что он будет драться с Распутиным и это был бы сильный контраст между ними, типа есть миф, что Распутина несколько раз пытались убить, но он выжил (хотя, от пули в живот он увернуться не смог) и он сражается против Бога, который сопровождает людей в загробный мир, ну здорово же звучит.</p>
+        </div>
+
+        <!-- Нострадамус -->
+        <div class="extra-item">
+            <div class="extra-name">Нострадамус</div>
+            <div class="extra-image">
+                <img src="images/extra_nostradamus.jpg" alt="Нострадамус">
+            </div>
+            <p>Тоже один из будущих бойцов, но со стороны людей, про него известно мало, но он показал пару трюков… например переоделся в Брюнхильду и говорил её голосом… Биврёст сломал там, ну короче, тоже имба и скорее всего он будет сражаться в последней схватке, а не Распутин.</p>
+        </div>
+
+        <!-- Арес и Гермес -->
+        <div class="extra-item">
+            <div class="extra-name">Арес и Гермес</div>
+            <div class="extra-image">
+                <img src="images/extra_ares_hermes.jpg" alt="Арес и Гермес">
+            </div>
+            <p>Пускай будут вместе, так как они в основном вместе сидят на балконе и анализируют бои, из Ареса сделали плаксу, ради шутки, а с Гермесом интереснее, как будто он замышляет какой-то переворот, в самом начале манги он о чём-то говорил с Брюнхильдой, но что именно, неизвестно, но возможно, он докладывает о бойцах со стороны Богов, но зачем ему это, непонятно.</p>
+        </div>
+    </div>
+<!-- ===== ТАБЛИЦА ИТОГОВЫХ БАЛЛОВ ===== -->
+<div style="margin-top: 2.5rem; background: #f8f5f0; border-radius: 20px; padding: 1.8rem 2rem; border-left: 5px solid #b8a99a;">
+    <h2 style="font-size: 1.8rem; margin-bottom: 1.2rem; border-bottom: 3px solid #d6cbbc; padding-bottom: 0.3rem;">📊 Итоговые баллы по боям (1–11)</h2>
+    <div style="overflow-x: auto;">
+        <table style="width: 100%; border-collapse: collapse; font-size: 0.95rem; background: #ffffff; border-radius: 14px; overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,0.05);">
+            <thead style="background: #1a1a2e; color: #fff;">
+                <tr>
+                    <th style="padding: 0.8rem 0.5rem; text-align: center;">Бой</th>
+                    <th style="padding: 0.8rem 0.5rem; text-align: center;">Человек</th>
+                    <th style="padding: 0.8rem 0.5rem; text-align: center;">Бог</th>
+                    <th style="padding: 0.8rem 0.5rem; text-align: center;">Валькирия</th>
+                    <th style="padding: 0.8rem 0.5rem; text-align: center;">Битва</th>
+                    <th style="padding: 0.8rem 0.5rem; text-align: center;">Момент Х</th>
+                    <th style="padding: 0.8rem 0.5rem; text-align: center; background: #c9b8a8; color: #1a1a2e;">Итог</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Бой 3 -->
+                <tr style="border-bottom: 1px solid #e0d6cc;">
+                    <td style="padding: 0.6rem 0.5rem; text-align: center; font-weight: 600;">3</td>
+                    <td style="padding: 0.6rem 0.5rem; text-align: center;">1,0</td>
+                    <td style="padding: 0.6rem 0.5rem; text-align: center;">0,6</td>
+                    <td style="padding: 0.6rem 0.5rem; text-align: center;">0,8</td>
+                    <td style="padding: 0.6rem 0.5rem; text-align: center;">1,0</td>
+                    <td style="padding: 0.6rem 0.5rem; text-align: center;">0</td>
+                    <td style="padding: 0.6rem 0.5rem; text-align: center; font-weight: 700; background: #faeedb;">3,6</td>
+                </tr>
+                <!-- Бой 8 -->
+                <tr style="border-bottom: 1px solid #e0d6cc;">
+                    <td style="padding: 0.6rem 0.5rem; text-align: center; font-weight: 600;">8</td>
+                    <td style="padding: 0.6rem 0.5rem; text-align: center;">1,0</td>
+                    <td style="padding: 0.6rem 0.5rem; text-align: center;">1,0</td>
+                    <td style="padding: 0.6rem 0.5rem; text-align: center;">1,0</td>
+                    <td style="padding: 0.6rem 0.5rem; text-align: center;">0,5</td>
+                    <td style="padding: 0.6rem 0.5rem; text-align: center;">0</td>
+                    <td style="padding: 0.6rem 0.5rem; text-align: center; font-weight: 700; background: #faeedb;">3,5</td>
+                </tr>
+                <!-- Бой 11 -->
+                <tr style="border-bottom: 1px solid #e0d6cc;">
+                    <td style="padding: 0.6rem 0.5rem; text-align: center; font-weight: 600;">11</td>
+                    <td style="padding: 0.6rem 0.5rem; text-align: center;">0,8</td>
+                    <td style="padding: 0.6rem 0.5rem; text-align: center;">0,8</td>
+                    <td style="padding: 0.6rem 0.5rem; text-align: center;">1,0</td>
+                    <td style="padding: 0.6rem 0.5rem; text-align: center;">1,0</td>
+                    <td style="padding: 0.6rem 0.5rem; text-align: center;">0</td>
+                    <td style="padding: 0.6rem 0.5rem; text-align: center; font-weight: 700; background: #faeedb;">3,4</td>
+                </tr>
+                <!-- Бой 2 -->
+                <tr style="border-bottom: 1px solid #e0d6cc;">
+                    <td style="padding: 0.6rem 0.5rem; text-align: center; font-weight: 600;">2</td>
+                    <td style="padding: 0.6rem 0.5rem; text-align: center;">1,0</td>
+                    <td style="padding: 0.6rem 0.5rem; text-align: center;">0,8</td>
+                    <td style="padding: 0.6rem 0.5rem; text-align: center;">1,5</td>
+                    <td style="padding: 0.6rem 0.5rem; text-align: center;">1,0</td>
+                    <td style="padding: 0.6rem 0.5rem; text-align: center;">0</td>
+                    <td style="padding: 0.6rem 0.5rem; text-align: center; font-weight: 700; background: #faeedb;">3,3</td>
+                </tr>
+                <!-- Бой 9 -->
+                <tr style="border-bottom: 1px solid #e0d6cc;">
+                    <td style="padding: 0.6rem 0.5rem; text-align: center; font-weight: 600;">9</td>
+                    <td style="padding: 0.6rem 0.5rem; text-align: center;">1,0</td>
+                    <td style="padding: 0.6rem 0.5rem; text-align: center;">1,0</td>
+                    <td style="padding: 0.6rem 0.5rem; text-align: center;">1,0</td>
+                    <td style="padding: 0.6rem 0.5rem; text-align: center;">1,0</td>
+                    <td style="padding: 0.6rem 0.5rem; text-align: center;">−1</td>
+                    <td style="padding: 0.6rem 0.5rem; text-align: center; font-weight: 700; background: #faeedb;">3,0</td>
+                </tr>
+                <!-- Бой 6 -->
+                <tr style="border-bottom: 1px solid #e0d6cc;">
+                    <td style="padding: 0.6rem 0.5rem; text-align: center; font-weight: 600;">6</td>
+                    <td style="padding: 0.6rem 0.5rem; text-align: center;">1,0</td>
+                    <td style="padding: 0.6rem 0.5rem; text-align: center;">0,5</td>
+                    <td style="padding: 0.6rem 0.5rem; text-align: center;">0</td>
+                    <td style="padding: 0.6rem 0.5rem; text-align: center;">1,0</td>
+                    <td style="padding: 0.6rem 0.5rem; text-align: center;">0</td>
+                    <td style="padding: 0.6rem 0.5rem; text-align: center; font-weight: 700; background: #faeedb;">2,7</td>
+                </tr>
+                <!-- Бой 10 -->
+                <tr style="border-bottom: 1px solid #e0d6cc;">
+                    <td style="padding: 0.6rem 0.5rem; text-align: center; font-weight: 600;">10</td>
+                    <td style="padding: 0.6rem 0.5rem; text-align: center;">0,3</td>
+                    <td style="padding: 0.6rem 0.5rem; text-align: center;">1,0</td>
+                    <td style="padding: 0.6rem 0.5rem; text-align: center;">0,8</td>
+                    <td style="padding: 0.6rem 0.5rem; text-align: center;">0,5</td>
+                    <td style="padding: 0.6rem 0.5rem; text-align: center;">0</td>
+                    <td style="padding: 0.6rem 0.5rem; text-align: center; font-weight: 700; background: #faeedb;">2,6</td>
+                </tr>
+                <!-- Бой 4 -->
+                <tr style="border-bottom: 1px solid #e0d6cc;">
+                    <td style="padding: 0.6rem 0.5rem; text-align: center; font-weight: 600;">4</td>
+                    <td style="padding: 0.6rem 0.5rem; text-align: center;">0,5</td>
+                    <td style="padding: 0.6rem 0.5rem; text-align: center;">0,5</td>
+                    <td style="padding: 0.6rem 0.5rem; text-align: center;">0,5</td>
+                    <td style="padding: 0.6rem 0.5rem; text-align: center;">1,0</td>
+                    <td style="padding: 0.6rem 0.5rem; text-align: center;">0</td>
+                    <td style="padding: 0.6rem 0.5rem; text-align: center; font-weight: 700; background: #faeedb;">2,5</td>
+                </tr>
+                <!-- Бой 7 -->
+                <tr style="border-bottom: 1px solid #e0d6cc;">
+                    <td style="padding: 0.6rem 0.5rem; text-align: center; font-weight: 600;">7</td>
+                    <td style="padding: 0.6rem 0.5rem; text-align: center;">0,8</td>
+                    <td style="padding: 0.6rem 0.5rem; text-align: center;">1,0</td>
+                    <td style="padding: 0.6rem 0.5rem; text-align: center;">0,5</td>
+                    <td style="padding: 0.6rem 0.5rem; text-align: center;">1,0</td>
+                    <td style="padding: 0.6rem 0.5rem; text-align: center;">−1</td>
+                    <td style="padding: 0.6rem 0.5rem; text-align: center; font-weight: 700; background: #faeedb;">2,3</td>
+                </tr>
+                <!-- Бой 1 -->
+                <tr style="border-bottom: 1px solid #e0d6cc;">
+                    <td style="padding: 0.6rem 0.5rem; text-align: center; font-weight: 600;">1</td>
+                    <td style="padding: 0.6rem 0.5rem; text-align: center;">0,5</td>
+                    <td style="padding: 0.6rem 0.5rem; text-align: center;">0,7</td>
+                    <td style="padding: 0.6rem 0.5rem; text-align: center;">0,5</td>
+                    <td style="padding: 0.6rem 0.5rem; text-align: center;">1,0</td>
+                    <td style="padding: 0.6rem 0.5rem; text-align: center;">−1</td>
+                    <td style="padding: 0.6rem 0.5rem; text-align: center; font-weight: 700; background: #faeedb;">1,7</td>
+                </tr>
+                <!-- Бой 5 -->
+                <tr style="border-bottom: 1px solid #e0d6cc;">
+                    <td style="padding: 0.6rem 0.5rem; text-align: center; font-weight: 600;">5</td>
+                    <td style="padding: 0.6rem 0.5rem; text-align: center;">0,6</td>
+                    <td style="padding: 0.6rem 0.5rem; text-align: center;">0,7</td>
+                    <td style="padding: 0.6rem 0.5rem; text-align: center;">0,6</td>
+                    <td style="padding: 0.6rem 0.5rem; text-align: center;">0,8</td>
+                    <td style="padding: 0.6rem 0.5rem; text-align: center;">−1</td>
+                    <td style="padding: 0.6rem 0.5rem; text-align: center; font-weight: 700; background: #faeedb;">1,7</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+
+    </div>
+
+    <!-- Бой 12 -->
+    <div style="margin-top: 1.5rem; padding: 0.8rem 1.2rem; background: #f0ebe5; border-radius: 12px; border-left: 4px solid #b8a99a; font-style: italic;">
+        ⏳ <strong>Бой №12</strong> (Кинтоки против Одина) пока не завершён, итоговый балл не определён.
+    </div>
+</div>
+    <hr>
+
+    <div style="margin-top: 2rem; font-size: 0.8rem; color: #7a6e62; text-align: center; border-top: 1px solid #e0d6cc; padding-top: 1.2rem;">
+        ⚡ Сделано по мотивам прочтения «Повести о конце света» (Record of Ragnarok) · 2026
+    </div>
+
+</div>
+</body>
+</html>
